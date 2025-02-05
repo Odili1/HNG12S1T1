@@ -11,7 +11,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddHttpClient();
-builder.Services.AddMvc();
+//builder.Services.AddMvc();
 builder.Services.AddScoped<NumberService>();
 builder.Services.AddControllers();
 

@@ -22,6 +22,7 @@
 
         private bool IsPerfect(int num)
         {
+            if (num <= 0) return false;
             int sum = Enumerable.Range(1, num / 2).Where(i => num % i == 0).Sum();
             return sum == num;
         }
@@ -34,7 +35,7 @@
 
         private int GetDigitSum(int num)
         {
-            return num.ToString().Sum(i => i - '0');
+            return num.ToString().Where(n => char.IsDigit(n)).Sum(n => n - '0');
         }
 
         private async Task<string> GetFunFact(int num)
@@ -57,7 +58,9 @@
             }
 
             var properties = new List<string>();
-            if (IsArmstrong(number)) properties.Add("armstrong");
+
+            int absNumber = Math.Abs(number);
+            if (IsArmstrong(absNumber)) properties.Add("armstrong");
             properties.Add(number % 2 == 0 ? "even" : "odd");
             
             var funFact = await GetFunFact(number);
