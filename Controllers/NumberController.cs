@@ -16,9 +16,20 @@ namespace HNG12S1T1.Controllers
         }
 
         [HttpGet("classify-number")]
-        public async Task<IActionResult> Get([FromQuery] string number)
+        public async Task<IActionResult> Get([FromQuery] string? number)
         {
+            if (string.IsNullOrWhiteSpace(number))
+            {
+                return BadRequest(new { number = "alphabet", error = true });
+            }
+
             var result = await _numberService.ClassifyNumber(number);
+
+            if (result == null)
+            {
+                return BadRequest(new { number = "alphabet", error = true });
+            }
+
             return Ok(result);
         }
     }

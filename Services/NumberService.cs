@@ -23,12 +23,14 @@
         private bool IsPerfect(int num)
         {
             if (num <= 0) return false;
-            int sum = Enumerable.Range(1, num / 2).Where(i => num % i == 0).Sum();
-            return sum == num;
+            int absNum = Math.Abs(num);
+            int sum = Enumerable.Range(1, absNum / 2).Where(i => absNum % i == 0).Sum();
+            return sum == absNum;
         }
 
         private bool IsArmstrong(int num)
         {
+            if (num < 0) return false;
             int sum = num.ToString().Sum(i => (int)Math.Pow(i - '0', num.ToString().Length));
             return sum == num;
         }
@@ -59,8 +61,8 @@
 
             var properties = new List<string>();
 
-            int absNumber = Math.Abs(number);
-            if (IsArmstrong(absNumber)) properties.Add("armstrong");
+            
+            if (IsArmstrong(number)) properties.Add("armstrong");
             properties.Add(number % 2 == 0 ? "even" : "odd");
             
             var funFact = await GetFunFact(number);
