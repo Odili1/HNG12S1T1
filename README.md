@@ -51,7 +51,7 @@ Returns:
 
 ## Deployment
 
-Live URL: hng12s1t1-production.up.railway.app/api/classify-number
+Live URL: https://hng12s1t1-production.up.railway.app/api/classify-number
 
 GitHub Repo: https://github.com/Odili1/hngHNG12S1T1
 
